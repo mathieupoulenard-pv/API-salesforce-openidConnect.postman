@@ -1,0 +1,836 @@
+{
+	"info": {
+		"_postman_id": "87e1e087-5465-4bdf-af84-30db08c238eb",
+		"name": "API-salesforce-openidConnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1-Openid Configuration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://int-glevents.cs128.force.com/PV/.well-known/openid-configuration",
+					"protocol": "https",
+					"host": [
+						"int-glevents",
+						"cs128",
+						"force",
+						"com"
+					],
+					"path": [
+						"PV",
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-login",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic ZWNCREFxa0V1NENuSXBobFh5NjdydDJpZ3dvalZVOTBtWjpXNkZrYTRTbEtEMDV2RWRnM3lobndVb0x1NzlZUGNpTUE4",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://int-glevents.cs128.force.com/PV/services/oauth2/authorize?client_id=3MVG9Lu3LaaTCEgLUU5QhgBl5nafRnlbKwB8PqnhYW8kYjO2r9vMzPoxoc7Xx6aAH4DMS0ZjmoojvAo614jG6&response_type=code&redirect_uri=https://pv-marketplace.herokuapp.com/_callback.php",
+					"protocol": "https",
+					"host": [
+						"int-glevents",
+						"cs128",
+						"force",
+						"com"
+					],
+					"path": [
+						"PV",
+						"services",
+						"oauth2",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "3MVG9Lu3LaaTCEgLUU5QhgBl5nafRnlbKwB8PqnhYW8kYjO2r9vMzPoxoc7Xx6aAH4DMS0ZjmoojvAo614jG6"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://pv-marketplace.herokuapp.com/_callback.php"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-request-token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic ZWNCREFxa0V1NENuSXBobFh5NjdydDJpZ3dvalZVOTBtWjpXNkZrYTRTbEtEMDV2RWRnM3lobndVb0x1NzlZUGNpTUE4",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://int-glevents.cs128.force.com/PV/services/oauth2/token?grant_type=authorization_code&code=aPrx8uCc02_kjIDJzmo3Z6NR.v7SwDQIIvIsrrk3KYTzumkGhx.4IigUi1Vtb9rpWnXVZDI13Q%3D%3D&redirect_uri=https://pv-marketplace.herokuapp.com/_callback.php&client_id=3MVG9Lu3LaaTCEgLUU5QhgBl5nafRnlbKwB8PqnhYW8kYjO2r9vMzPoxoc7Xx6aAH4DMS0ZjmoojvAo614jG6&client_secret=B5ED22E47467E5A412E20968FA4E61F2C1550D7FCAFFFBCDF3F38B7517766E18",
+					"protocol": "https",
+					"host": [
+						"int-glevents",
+						"cs128",
+						"force",
+						"com"
+					],
+					"path": [
+						"PV",
+						"services",
+						"oauth2",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "code",
+							"value": "aPrx8uCc02_kjIDJzmo3Z6NR.v7SwDQIIvIsrrk3KYTzumkGhx.4IigUi1Vtb9rpWnXVZDI13Q%3D%3D"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://pv-marketplace.herokuapp.com/_callback.php"
+						},
+						{
+							"key": "client_id",
+							"value": "3MVG9Lu3LaaTCEgLUU5QhgBl5nafRnlbKwB8PqnhYW8kYjO2r9vMzPoxoc7Xx6aAH4DMS0ZjmoojvAo614jG6"
+						},
+						{
+							"key": "client_secret",
+							"value": "B5ED22E47467E5A412E20968FA4E61F2C1550D7FCAFFFBCDF3F38B7517766E18"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-Fetch User info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQL5UJnxh18zhxASa3nZbccNwyFZlR8Bk9H6v.MeqcgKTLn_PV79InxnHk0PPzCewWyBxAR6sPOrheAE2clHZV8E1FH3L"
+					}
+				],
+				"url": {
+					"raw": "https://int-glevents.cs128.force.com/PV/services/oauth2/userinfo",
+					"protocol": "https",
+					"host": [
+						"int-glevents",
+						"cs128",
+						"force",
+						"com"
+					],
+					"path": [
+						"PV",
+						"services",
+						"oauth2",
+						"userinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest LIST",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQMZr37I8AUWy.ZUUmg3nJalYnnbKTVgP4QRR5zyH7h_jXH6dVH9cx.zSJyW7Ymju7rtS7amy0TwDElAwB207c5Wj1RCV"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - All Campaigns PV details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQJhKBkHjDUJs.IM99S4HHOS_I8sOjLaYwqWrpJxGzQITs7rbaqODlRNmwWgdWA8twKJ3tM2lLhGbqkuNdyZUaDE3kDO7"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/Campaign",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"Campaign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Search Campaigns details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQIvb9PClnsj3oZioCj0IfQOIhyr8dOgTP6s1NCJ.B2puBumbecZ_e_3HsryXZ0YPrK0q70rylSGo0OgP_2hYinTp4Cj3"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/parameterizedSearch/?q=RPA&sobject=Campaign&Campaign.fields=id,name,code__c",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"parameterizedSearch",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "RPA"
+						},
+						{
+							"key": "sobject",
+							"value": "Campaign"
+						},
+						{
+							"key": "Campaign.fields",
+							"value": "id,name,code__c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Campaign details by code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQIvb9PClnsj3oZioCj0IfQOIhyr8dOgTP6s1NCJ.B2puBumbecZ_e_3HsryXZ0YPrK0q70rylSGo0OgP_2hYinTp4Cj3"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/Campaign/Code__c/RPA",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"Campaign",
+						"Code__c",
+						"RPA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - User - mp-test-heroku",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQEOatv_AS_Egsrsozqdd3UdhmvTXiWiJBBgOFM5p5hxoDP1_bzXE2TK8.vxfVzo85ZlJkQxeEPfUke7YZ63HSjJ7tEGq"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/User/0053N000000jVgMQAU",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"User",
+						"0053N000000jVgMQAU"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - mp-test-heroku",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQEOUSqwTR9FpZb.2.P.OuP.sfH40n_MzVOPxNmjxEiHyP3dARuaX_Gant2RiZ6U8nD9syiK8bkd5Eeb7nLliM1XKqlbg"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/contact/0033N0000083v3sQAA",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"contact",
+						"0033N0000083v3sQAA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Account - mp-test-heroku",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQEcOZxJGEz3dR8ba4ouvuBZPaDLn5NkJjr8v4X_iI1dSAXQS7N8kRIRN4_j5iC6azEm8S2Yc8sla5j4JCxzwdm3E5_Zx"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/account/0013N00000AYprqQAD",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"account",
+						"0013N00000AYprqQAD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Account All users - mp-test-heroku",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGU1ArRZXvbz6plqf893PIZSAXLe4RkxAzzkNt8a7kFksVdoHDE1bAhUNiq6P5WB1KtiMZ2mFTA1RR6XvBfOZQrIi6xv"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/account/0013N00000AYprqQAD/Contacts",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"account",
+						"0013N00000AYprqQAD",
+						"Contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Account create new user - mp-test-heroku",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGU1ArRZXvbz6plqf893PIZSAXLe4RkxAzzkNt8a7kFksVdoHDE1bAhUNiq6P5WB1KtiMZ2mFTA1RR6XvBfOZQrIi6xv"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \t\"AccountId\"  : \"0013N00000AYprqQAD\",\r\n  \t\"FirstName\": \"NewPrenom123456\",\r\n    \"LastName\": \"NewNom123456\",\r\n    \"Email\": \"mp-test-123456@yopmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/Contact",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"Contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - Adresse - mp-test-heroku",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGBllQWZi9Jg6RtoYhS0K8bSZCkDCu.cMI4QXS9174INS5ViY_2N.vyRBLRllZ29cpXuVn_0H1q9XAFjCUePFy8Cb_hG"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"MailingStreet\" : \"Ma rue\",\r\n    \"MailingCity\" : \"Lyon\",\r\n    \"MailingPostalCode\" : \"69002\",\r\n    \"MailingCountry\" : \"France\"\r\n}"
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/contact/0033N0000083v3sQAA",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"contact",
+						"0033N0000083v3sQAA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - MC MKtp- mp-test-heroku",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGBllQWZi9Jg6RtoYhS0K8bSZCkDCu.cMI4QXS9174INS5ViY_2N.vyRBLRllZ29cpXuVn_0H1q9XAFjCUePFy8Cb_hG"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Campaign\": \r\n    {\r\n    \t\"Code__c\"  : \"MKP\"\r\n    },\r\n    \"ContactId\" : \"0033N0000083v3sQAA\",\r\n    \"utm_campaign__c\" : \"ga_campaign_prg\",\r\n    \"utm_content__c\" : \"ga_content_prg\",\r\n    \"utm_medium__c\" : \"ga_medium_prg\",\r\n    \"utm_source__c\" : \"ga_source_prg\",\r\n    \"utm_term__c\" : \"ga_term_prg\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/CampaignMember",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"CampaignMember"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - MC MKtp- mp-test-heroku",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGBllQWZi9Jg6RtoYhS0K8bSZCkDCu.cMI4QXS9174INS5ViY_2N.vyRBLRllZ29cpXuVn_0H1q9XAFjCUePFy8Cb_hG"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Campaign\": \r\n    {\r\n    \t\"Code__c\"  : \"MKP\"\r\n    },\r\n    \"ContactId\" : \"0033N0000083v3sQAA\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/CampaignMember",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"CampaignMember"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - MC MKtp without externalId - mp-test-heroku",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGBllQWZi9Jg6RtoYhS0K8bSZCkDCu.cMI4QXS9174INS5ViY_2N.vyRBLRllZ29cpXuVn_0H1q9XAFjCUePFy8Cb_hG"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CampaignId\": \"7013N0000005uHHQAY\",\r\n    \"ContactId\" : \"0033N0000083v3sQAA\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/CampaignMember",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"CampaignMember"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - MC Boutique - mp-test-heroku",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGBllQWZi9Jg6RtoYhS0K8bSZCkDCu.cMI4QXS9174INS5ViY_2N.vyRBLRllZ29cpXuVn_0H1q9XAFjCUePFy8Cb_hG"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Campaign\": \r\n    {\r\n    \t\"Code__c\"  : \"RPA\"\r\n    },\r\n    \"ContactId\" : \"0033N0000083v3sQAA\",\r\n    \"utm_campaign__c\" : \"ga_campaign_prg\",\r\n    \"utm_content__c\" : \"ga_content_prg\",\r\n    \"utm_medium__c\" : \"ga_medium_prg\",\r\n    \"utm_source__c\" : \"ga_source_prg\",\r\n    \"utm_term__c\" : \"ga_term_prg\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/CampaignMember",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"CampaignMember"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - MC Edition Boutique - mp-test-heroku",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQGU1ArRZXvbz6plqf893PIZSAXLe4RkxAzzkNt8a7kFksVdoHDE1bAhUNiq6P5WB1KtiMZ2mFTA1RR6XvBfOZQrIi6xv"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Campaign\": \r\n    {\r\n    \t\"Code__c\"  : \"RPA20201\"\r\n    },\r\n    \"ContactId\" : \"0033N0000083v3sQAA\",\r\n    \"IsPE__c\" : true,\r\n    \"Date_de_PE__c\" : \"2020-02-27T18:00:00\",\r\n    \"Type_de_badge__c\" : \"cms-gpr\",\r\n    \"Payant__c\" : \"Oui\",\r\n    \"Nombre_de_billets__c\" : 1,\r\n    \"CA_Billet__c\" : 60,\r\n    \"utm_campaign__c\" : \"ga_campaign\",\r\n    \"utm_content__c\" : \"ga_content\",\r\n    \"utm_medium__c\" : \"ga_medium\",\r\n    \"utm_source__c\" : \"ga_source\",\r\n    \"utm_term__c\" : \"ga_term\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/CampaignMember",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"CampaignMember"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Consent - mp-test-heroku",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQEOUSqwTR9FpZb.2.P.OuP.sfH40n_MzVOPxNmjxEiHyP3dARuaX_Gant2RiZ6U8nD9syiK8bkd5Eeb7nLliM1XKqlbg"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/Consentement__c/a0T3N0000001F8JUAU",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"Consentement__c",
+						"a0T3N0000001F8JUAU"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - All Consents for user - mp-test-heroku",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQEOUSqwTR9FpZb.2.P.OuP.sfH40n_MzVOPxNmjxEiHyP3dARuaX_Gant2RiZ6U8nD9syiK8bkd5Eeb7nLliM1XKqlbg"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/Contact/0033N0000083v3sQAA/Consentements__r",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"Contact",
+						"0033N0000083v3sQAA",
+						"Consentements__r"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - Contact - Consent MKP - mp-test-heroku",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQEOUSqwTR9FpZb.2.P.OuP.sfH40n_MzVOPxNmjxEiHyP3dARuaX_Gant2RiZ6U8nD9syiK8bkd5Eeb7nLliM1XKqlbg"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Campagne__r\":\r\n    {\r\n    \t\"Code__c\"  : \"MKP\"\r\n    },\r\n    \"Contact__c\": \"0033N0000083v3sQAA\",\r\n    \"Optin_SMS__c\" : true,\r\n    \"Optin_SMS_Date_Creation__c\" : \"2020-02-27T18:00:00\",\r\n    \"Optin_SMS_Date_Modification__c\" : \"2020-02-27T18:00:00\"\r\n}\r\n\r\n"
+				},
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/Consentement__c",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"Consentement__c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API rest - All CampaignMembers for user - mp-test-heroku",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D3N0000000V51!AQIAQJhKBkHjDUJs.IM99S4HHOS_I8sOjLaYwqWrpJxGzQITs7rbaqODlRNmwWgdWA8twKJ3tM2lLhGbqkuNdyZUaDE3kDO7"
+					}
+				],
+				"url": {
+					"raw": "https://glevents--int.my.salesforce.com/services/data/v48.0/sobjects/Contact/0033N0000083v3sQAA/CampaignMembers",
+					"protocol": "https",
+					"host": [
+						"glevents--int",
+						"my",
+						"salesforce",
+						"com"
+					],
+					"path": [
+						"services",
+						"data",
+						"v48.0",
+						"sobjects",
+						"Contact",
+						"0033N0000083v3sQAA",
+						"CampaignMembers"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
